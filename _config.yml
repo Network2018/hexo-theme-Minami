@@ -5,8 +5,8 @@ menu:
  Home: /
  Archive: /archive/
  Catagory: /category/
- RSS: /feed/
  Tag: /tag/
+ RSS: /feed/
 
 # article catalog
 catalog: true
