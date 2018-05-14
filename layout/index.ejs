@@ -1,0 +1,32 @@
+<div id="article-banner">
+    <h2><%- page.path %></h2>
+    <p class="post-date"><%- date(page.date, "MM/DD/YYYY") %></p>
+</div>
+<main class="app-body">
+    <% page.posts.each(function(post) { %>
+        <article class="article-card">
+            <h2 class="article-head">
+                <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+            </h2>
+            <p class="article-date"><%- date(post.date, "LL") %></p>
+            <% if (post.tags && post.tags.length) { %>
+                <%- partial('_partial/tag', { tags: post.tags }) %>
+            <% } %>
+            <a class="more" href="<%- url_for(post.path) %>"><%- theme.excerpt_link %></a>
+        </article>
+    <% }) %>
+
+    <% if (page.total > 1){ %>
+        <%- partial('_partial/pager') %>
+    <% } %>
+</main>
+
+<script>
+    (function () {
+        var banner = '<%- theme.uri_banner %>'
+        $('#article-banner').css({
+            'background-image': 'url(' + banner + ')'
+        })
+        $('.header').removeClass('fixed-header')
+    })();
+</script>
